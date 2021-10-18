@@ -7,5 +7,6 @@ package com.wyman.datastructor.rebase;
 public class Rebase {
     public static void main(String[] args) {
         System.out.println(1);
+        System.out.println(2);
     }
 }
