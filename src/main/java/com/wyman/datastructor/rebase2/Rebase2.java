@@ -10,5 +10,6 @@ public class Rebase2 {
         System.out.println("rebase21第一次");
         System.out.println("rebase22第二次");
         System.out.println("rebase23第三次");
+        System.out.println("rebase2新增接口");
     }
 }
