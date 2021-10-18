@@ -9,5 +9,6 @@ public class Rebase2 {
         System.out.println("rebase2初始化");
         System.out.println("rebase21第一次");
         System.out.println("rebase22第二次");
+        System.out.println("rebase23第三次");
     }
 }
