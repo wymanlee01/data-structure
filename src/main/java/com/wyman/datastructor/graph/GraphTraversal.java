@@ -73,6 +73,7 @@ public class GraphTraversal {
                 if (!visited[neighbor]) {
                     // 设置已访问，并加入待遍历的队列中
                     visited[neighbor] = true;
+
                     queue.add(neighbor);
                 }
             }

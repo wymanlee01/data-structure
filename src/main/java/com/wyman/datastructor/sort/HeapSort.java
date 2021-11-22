@@ -1,6 +1,5 @@
 package com.wyman.datastructor.sort;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -11,14 +10,16 @@ import java.util.Arrays;
  */
 public class HeapSort {
     public static void main(String[] args) {
-        BigDecimal bigDecimal = new BigDecimal(0.36);
         int[] arr = {16, 7, 3, 20, 17, 8};
         System.out.println("排序前" + Arrays.toString(arr));
+
         // 构建初始堆,从第一个非叶子节点开始调整，父节点大于左右子节点
         int startIndex = (arr.length - 1) / 2;
         for (int i = startIndex; i >= 0; i--) {
             heap(arr, arr.length, i);
         }
+
+
         // 排序,堆头元素与堆尾元素互换
         for (int i = arr.length - 1; i > 0; i--) {
             int temp = arr[0];
