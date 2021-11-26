@@ -1,6 +1,5 @@
 package com.wyman.datastructor.shotpath;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
