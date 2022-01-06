@@ -78,7 +78,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        List<List<String>> lists = new Solution().solveNQueens(8);
+        List<List<String>> lists = new Solution().solveNQueens(10);
         for (List<String> list : lists) {
             System.out.println(list);
         }

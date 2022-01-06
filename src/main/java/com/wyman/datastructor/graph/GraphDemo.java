@@ -5,13 +5,13 @@ import java.util.ArrayList;
 /**
  * 图
  */
-public class ListGraph {
+public class GraphDemo {
 
     ArrayList<ArrayList<Integer>> graphs;
 
     public static void main(String[] args) {
         // 构建图
-        ListGraph graph = new ListGraph(6);
+        GraphDemo graph = new GraphDemo(6);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 3);
@@ -20,19 +20,25 @@ public class ListGraph {
         graph.addEdge(3, 5);
         graph.addEdge(3, 4);
         graph.addEdge(4, 5);
-        // 打印邻接表
+
+        System.out.println("打印邻接表");
         graph.print();
+
         // 图的遍历
-        GraphTraversal traversal = new GraphTraversal(graph);
-        traversal.DFS();
-       // traversal.BFS();
+        System.out.println("图的深度优先遍历如下:");
+        GraphDFSTraversal dfsTraversal = new GraphDFSTraversal(graph);
+        dfsTraversal.DFS();
+
+        System.out.println("\n图的广度优先遍历如下:");
+        GraphBFSTraversal bfsTraversal = new GraphBFSTraversal(graph);
+        bfsTraversal.BFS();
 
     }
 
     /**
      * 初始化构造图
      */
-    public ListGraph(int v) {
+    public GraphDemo(int v) {
         graphs = new ArrayList<>();
         for (int i = 0; i < v; i++) {
             graphs.add(new ArrayList<>());
@@ -65,4 +71,5 @@ public class ListGraph {
             System.out.println();
         }
     }
+
 }

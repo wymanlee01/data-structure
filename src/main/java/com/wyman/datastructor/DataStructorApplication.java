@@ -9,5 +9,5 @@ public class DataStructorApplication {
     public static void main(String[] args) {
         SpringApplication.run(DataStructorApplication.class, args);
     }
-
+    
 }
