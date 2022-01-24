@@ -5,18 +5,12 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * 322. 零钱兑换
+ * 322. 零钱兑换 记忆化搜索
  */
 class Solution2 {
-    Integer min = Integer.MAX_VALUE;
     Map<Integer, Integer> map = new HashMap<>();
-
     public int coinChange(int[] coins, int amount) {
-        dfs(coins, amount, 0);
-        if (min == Integer.MAX_VALUE) {
-            return -1;
-        }
-        return min;
+        return dfs(coins, amount, 0);
     }
 
     /**
@@ -27,7 +21,7 @@ class Solution2 {
             return -1;
         }
         if (amount == 0) {
-           return 1;
+            return 0;
         }
         if (map.containsKey(amount)) {
             return map.get(amount);
@@ -37,15 +31,19 @@ class Solution2 {
         for (int i = 0; i < coins.length; i++) {
             Integer res = dfs(coins, amount - coins[i], count + 1);
             if (res >= 0 && res < min) {
-                min = res;
+                min = res + 1;
             }
-            map.put(amount, min);
         }
-
+        if (min == Integer.MAX_VALUE) {
+            min = -1;
+        }
+        map.put(amount, min);
+        return min;
     }
 
     public static void main(String[] args) {
         int[] coins = {1, 3, 5};
-        new Solution2().coinChange(coins, 11);
+        int i = new Solution2().coinChange(coins, 11);
+        System.out.println(i);
     }
 }
