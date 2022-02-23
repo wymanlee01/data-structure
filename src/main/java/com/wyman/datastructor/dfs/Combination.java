@@ -1,40 +1,38 @@
 package com.wyman.datastructor.dfs;
 
-import java.util.Stack;
+import java.util.LinkedList;
 
 /**
- * 数字排列组合
- *
  * @author liweiwen
- * @since 2022-01-16
+ * @since 2022-02-22
  */
 public class Combination {
 
-    public Stack<Character> res = new Stack<>();
+    public LinkedList<Character> res = new LinkedList<>();
 
-    public void dfs(char[] chars, boolean[] isVisit, int level) {
-        if (level == 3) {
+    /**
+     * @param chars   待选择的数
+     * @param target    要选择多少个次
+     * @param start     当前选择的是第几次
+     */
+    public void dfs(char[] chars, int target, int start) {
+        if (res.size() == target) {
             System.out.println(res);
             return;
         }
-        if (level > 3) {
-            return;
-        }
-        for (int i = 0; i < chars.length; i++) {
-            if (isVisit[i]) {
-                continue;
-            }
+        for (int i = start; i < chars.length; i++) {
             res.add(chars[i]);
-            isVisit[i] = true;
-            dfs(chars, isVisit, level + 1);
-            isVisit[i] = false;
-            res.pop();
+            // 这边从i开始，之前用过的就不使用了
+            dfs(chars, target, i + 1);
+            res.removeLast();
         }
     }
 
     public static void main(String[] args) {
-        char[] chars = {'A', 'B', 'C','D'};
-        new Combination().dfs(chars, new boolean[10], 1);
+        char[] chars = {'1', '2', '3', '4'};
+        for (int i = 0; i < chars.length; i++) {
+            new Combination().dfs(chars,  i + 1, 0);
+        }
     }
 
 }

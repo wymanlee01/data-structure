@@ -1,53 +1,52 @@
 package com.wyman.datastructor.leetcode202202.code1994;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import javax.imageio.plugins.jpeg.JPEGImageReadParam;
+import java.util.*;
 
 /**
  * 1994. 好子集的数目
  */
 class Solution {
-    public Stack<Integer> res = new Stack<>();
-    private List<List<Integer>> list = new ArrayList<>();
+    public List<Integer> tempList = new ArrayList<>();
+    private List<List<Integer>> res = new ArrayList<>();
 
     public int numberOfGoodSubsets(int[] nums) {
+        // 获取所有组合
         for (int i = 0; i < nums.length; i++) {
-            dfs(nums, new boolean[10], i+1, 0);
+            dfs(nums, i + 1, 0);
         }
-        return 0;
+        System.out.println(res);
+        // 互质组合
+        Integer[] prime = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+        Integer[] hes = {6, 10, 14, 15, 21, 22, 26, 30};
+        List<Integer> primeNumber = Arrays.asList(prime);
+        List<Integer> hesNumber = Arrays.asList(hes);
+
+        res.removeIf(list -> !betweenPrimeNumber(list, primeNumber, hesNumber));
+        System.out.println(res);
+        return res.size() % 1000000007;
     }
 
-    public void dfs(int[] chars, boolean[] isVisit, int n, int level) {
-        if (level == n) {
-            List<Integer> objects = new ArrayList<>();
-            int count =0;
-            while (count < res.size()) {
-                objects.add(res.peek());
-                count++;
-            }
-            list.add(objects);
+    public void dfs(int[] nums, int target, int start) {
+        if (tempList.size() == target) {
+            res.add(new ArrayList<>(tempList));
             return;
         }
-        if (level > n) {
-            return;
+        for (int i = start; i < nums.length; i++) {
+            tempList.add(nums[i]);
+            dfs(nums, target, i + 1);
+            tempList.remove(tempList.size() - 1);
         }
-        for (int i = 0; i < chars.length; i++) {
-            if (isVisit[i]) {
-                continue;
-            }
-            res.add(chars[i]);
-            isVisit[i] = true;
-            dfs(chars, isVisit, n, level + 1);
-            isVisit[i] = false;
-            res.pop();
-        }
+    }
+
+    public boolean betweenPrimeNumber(List<Integer> nums, List<Integer> primeList, List<Integer> hesList) {
+        return true;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 2, 3, 4};
+        int[] arr = new int[]{18,28,2,17,29,30,15,9,12};
         Solution solution = new Solution();
-        solution.numberOfGoodSubsets(arr);
-        System.out.println(solution.list);
+        int i = solution.numberOfGoodSubsets(arr);
+        System.out.println(i);
     }
 }
