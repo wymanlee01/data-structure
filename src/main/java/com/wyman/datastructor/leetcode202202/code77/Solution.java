@@ -41,7 +41,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> combine = new Solution().combine(4, 2);
+        List<List<Integer>> combine = new Solution().combine(4, 1);
         System.out.println(combine);
     }
 }
