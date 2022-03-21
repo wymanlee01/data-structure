@@ -1,4 +1,4 @@
-package com.wyman.datastructor.leetcode202203.code653;
+package com.wyman.datastructure.leetcode202203.code653;
 
 import java.util.HashMap;
 import java.util.HashSet;
